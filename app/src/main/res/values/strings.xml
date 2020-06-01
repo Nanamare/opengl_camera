@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name" translatable="false">Pichu</string>
+    <string name="temporary_error">Temporary error</string>
+    <string name="refresh">Refresh</string>
+    <string name="temporary_error_content">Sorry…</string>
+
+</resources>

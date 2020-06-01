@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="toolbar_height">56dp</dimen>
+
+    <dimen name="dp13">13dp</dimen>
+
+    <dimen name="dp12">12dp</dimen>
+
+    <dimen name="dp1">1dp</dimen>
+
+</resources>

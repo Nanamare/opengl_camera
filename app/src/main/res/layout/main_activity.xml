@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="layoutType"
+            type="com.pichu.nanamare.enums.CameraLayoutType" />
+
+        <variable
+            name="mainVM"
+            type="com.pichu.nanamare.vm.MainViewModel" />
+
+        <variable
+            name="cameraFilterVM"
+            type="com.pichu.nanamare.vm.CameraFilterVieModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        tools:context=".ui.MainActivity">
+
+        <com.pichu.nanamare.custom.AutoFitTextureView
+            android:id="@+id/tv_surface"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/appCompatImageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView"
+            app:layout_constraintEnd_toStartOf="@+id/appCompatImageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/appCompatImageView"
+            app:srcCompat="@drawable/img_back"
+            app:tint="@color/primary_400" />
+
+        <!-- android:onClick="@{() -> cameraFilterVM.onChangeLayout(layoutType.RESOLUTION_9TO16)}" -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_layout"
+            android:layout_width="36dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_rect_transparent_primary_400"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:onClick="@{() -> cameraFilterVM.onShowLayoutPopUp()}"
+            android:padding="4dp"
+            android:text="@{cameraFilterVM.liveSelectResolution}"
+            android:textColor="@color/primary_400"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="4:3" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/appCompatImageView3"
+            onBlockClick="@{() -> cameraFilterVM.onSwitchCamera()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:foreground="?attr/selectableItemBackground"
+            android:padding="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/appCompatImageView2"
+            app:layout_constraintTop_toTopOf="@+id/appCompatImageView2"
+            app:srcCompat="@drawable/img_switch_camera"
+            app:tint="@color/primary_400" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/appCompatImageView"
+            onBlockClick="@{() -> cameraFilterVM.onTurnOnFlash()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:foreground="?attr/selectableItemBackground"
+            android:padding="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/vcv_btn"
+            app:layout_constraintEnd_toStartOf="@+id/vcv_btn"
+            app:layout_constraintStart_toEndOf="@+id/appCompatImageView4"
+            app:layout_constraintTop_toTopOf="@+id/vcv_btn"
+            app:srcCompat="@drawable/img_flash"
+            app:tint="@color/primary_400" />
+
+        <com.pichu.nanamare.custom.VideoCircleView
+            android:id="@+id/vcv_btn"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="10dp"
+            android:foreground="?attr/selectableItemBackground"
+            app:excircleRadius="40dp"
+            app:innerCircleRadius="28dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:maxTime="20"
+            app:minTime="2" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/appCompatImageView2"
+            onBlockClick="@{() -> mainVM.onShowCameraFilter()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:foreground="?attr/selectableItemBackground"
+            android:padding="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/vcv_btn"
+            app:layout_constraintEnd_toStartOf="@+id/appCompatImageView3"
+            app:layout_constraintStart_toEndOf="@+id/vcv_btn"
+            app:layout_constraintTop_toTopOf="@+id/vcv_btn"
+            app:srcCompat="@drawable/img_filter"
+            app:tint="@color/primary_400" />
+
+        <ImageView
+            android:id="@+id/iv_focus_anim_view"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/camera_btn_focus"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
